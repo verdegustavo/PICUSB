@@ -1,0 +1,26 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC18F4550
+CCSVerions=5.015
+Compiler=PCH
+CCSVersion=5.015
+[Target Data]
+FileList=main.c
+[Directories]
+Include=C:\Program Files\PICC\Devices\;C:\Program Files\PICC\Drivers\;C:\Program Files\PICC\Drivers\C:\Program Files\PICC\Devices\
+[C:\Users\Gustavo Verde\Documents\PIC Projects\C\USB C++\main]
+Type=4
+[mru-list]
+1=main.c
+[Opened Files]
+1=main.c
+2=main.h
+3=..\..\..\..\..\..\Program Files\PICC\Devices\18F4550.h
+4=
+5=..\..\..\..\..\..\Program Files\PICC\Drivers\pic18_usb.c
+6=
+[main.c]
+Type=4
+[Units]
+Count=1
+1=main (main)

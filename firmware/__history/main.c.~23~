@@ -1,0 +1,63 @@
+#include "main.h"
+
+const int8 Lenbuf = 2;
+int8 recbuf[Lenbuf];
+int8 senbuf[Lenbuf];
+int1 botonStatus = true;
+
+void main()
+{
+   setup_adc_ports(AN0|VSS_VDD);
+   setup_adc(ADC_CLOCK_INTERNAL);;
+   setup_timer_0(RTCC_INTERNAL|RTCC_OFF);
+   setup_timer_1(T1_DISABLED);
+   setup_timer_2(T2_DISABLED,0,1);
+   setup_timer_3(T3_DISABLED|T3_DIV_BY_1);
+   setup_comparator(NC_NC_NC_NC);
+   setup_vref(FALSE);
+   delay_ms(500);
+   usb_init();
+   usb_task();
+   usb_wait_for_enumeration();
+   enable_interrupts(GLOBAL);
+   output_high(LED_AZUL);
+   output_high(LED_BLANCO);
+   
+   for(unsigned int8 i = 0; i < 3; ++i) {
+      output_low(LED_AZUL); 
+      delay_ms(100);
+      output_high(LED_AZUL);
+      delay_ms(100);
+   }
+   while(!usb_enumerated()) {
+      delay_cycles(1);
+   }
+   output_low(LED_AZUL);
+   
+   while(TRUE) {
+      if (usb_enumerated()) {
+         if (usb_kbhit(1)) {
+            usb_get_packet(1, recbuf, Lenbuf);
+            if (recbuf[0] == 0) {
+               output_toggle(LED_BLANCO);
+               long valor_adc;
+               valor_adc = read_adc();
+               senbuf[0] = valor_adc;
+               senbuf[1] = (0xFF & botonStatus);
+               usb_put_packet(1,senbuf,Lenbuf,USB_DTS_TOGGLE);
+            }
+         }
+      }
+      
+      if (input_state(BOTON) == 0) {
+         delay_ms(5);
+         while(input_state(BOTON)==0) {
+            delay_cycles(1);
+         }
+         if (botonStatus == TRUE)
+            botonStatus = FALSE;
+         else
+            botonStatus = TRUE;
+      }
+   }
+}

@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1499620237 source:/home/gustavo/Programming/C++/CodeBlocks Projects/PIC lUSB/main.cpp
+	<iostream>
+	<readline/readline.h>
+	<readline/history.h>
+	"pic_usb_hndl.h"
+
+1499619922 /home/gustavo/Programming/C++/CodeBlocks Projects/PIC lUSB/include/pic_usb_hndl.h
+	<iostream>
+	<usb.h>
+	<sstream>
+	"logFile.h"
+
+1499620142 source:/home/gustavo/Programming/C++/CodeBlocks Projects/PIC lUSB/source/pic_usb_hndl.cpp
+	"pic_usb_hndl.h"
+
+1456588681 /home/gustavo/Programming/C++/CodeBlocks Projects/PIC lUSB/include/LogFile.h
+	<fstream>
+	<ctime>
+	<iomanip>
+	<iostream>
+	<sstream>
+
+1456588681 /home/gustavo/Programming/C++/CodeBlocks Projects/PIC lUSB/include/logFile.h
+	<fstream>
+	<ctime>
+	<iomanip>
+	<iostream>
+	<sstream>
+

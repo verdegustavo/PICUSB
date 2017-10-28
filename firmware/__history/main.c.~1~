@@ -1,0 +1,21 @@
+#include <main.h>
+
+/* TODO: Use usb_put_packet() to transmit data to USB HID,
+using USB_HID_ENDPONT for the endpoint and the payload size
+needs to match USB_CONFIG_HID_TX_SIZE. Use usb_get_packet()
+to read incomming data, using USB_HID_ENDPOINT for the
+endpoint. usb_enumerated() can be used to see if connected to
+a host and ready to communicate. */
+
+void main()
+{
+	usb_init_cs();
+
+	while(TRUE)
+	{
+		usb_task();
+
+		//TODO: User Code
+	}
+
+}
